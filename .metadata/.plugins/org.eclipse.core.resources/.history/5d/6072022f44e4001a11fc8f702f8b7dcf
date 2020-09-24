@@ -1,0 +1,73 @@
+package bike.example.demo.service;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.GeoResult;
+import org.springframework.data.geo.GeoResults;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.NearQuery;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
+
+import bike.example.demo.pojo.Bike;
+import bike.example.demo.pojo.RepairMsg;
+
+@Service
+public class BikeServiceImpl implements BikeService {
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
+
+	@Override
+	public void save(Bike bike) {
+		//调用具体的业务
+		//mongoTemplate.insert(bike,"bikes");
+		mongoTemplate.insert(bike); //但是在Bike的类中，添加了注解，注解中保存了映射关系	
+	}
+	
+	
+	/**
+	 * 根据当前经纬度查找附近的单车
+	 */
+	@Override
+	public List<GeoResult<Bike>> findNear(double longitude, double latitude) {
+		// TODO Auto-generated method stub
+		//查找所有的单车
+		//return mongoTemplate.findAll(Bike.class);
+		
+		//查找附近的单车
+		NearQuery nearQuery=NearQuery.near(longitude, latitude);
+		//查找的范围和距离单位
+		nearQuery.maxDistance(0.2,Metrics.KILOMETERS);
+		GeoResults<Bike> geoResults=mongoTemplate.geoNear(nearQuery.query(new Query(Criteria.where("status").is(0)).limit(20)), Bike.class);
+		return geoResults.getContent();
+	}
+	
+	//插入报修信息
+		@Override
+		public void update(Bike bikeRepair) {
+		///如果对应_id数据不存在，就插入，存在则更新
+		//mongoTemplate.insert(bikeRepair);
+		//根据用户的手机号对数据进行更新
+		//更新用户对应的属性
+		Update update=new Update();
+		if(bikeRepair.getLocation()!=null) {
+			update.set("location",bikeRepair.getLocation());
+		}
+		if(bikeRepair.getMsg()!=null) {
+			update.set("repairMsg",bikeRepair.getMsg());
+		}
+		if(bikeRepair.getImage()!=null) {
+			update.set("image",bikeRepair.getImage());
+		}			
+		if(bikeRepair.getRegDate()!=null) {
+			update.set("image",bikeRepair.getRegDate());
+		}	
+		mongoTemplate.updateFirst(new Query(Criteria.where("bikeNo").is(bikeRepair.getBikeNo())),update, Bike.class);
+		}
+}

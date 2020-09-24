@@ -1,0 +1,5 @@
+package bike.example.demo.service;
+
+public interface BillingService {
+	public void billing(Billing billing);
+}

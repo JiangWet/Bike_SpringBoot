@@ -1,0 +1,31 @@
+package bike.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import bike.example.demo.pojo.RepairMsg;
+import bike.example.demo.service.RepairService;
+
+@Controller
+public class RepairController {
+	//到spring容器中查找BikeService的类型的实例，然后注入到BikeController实例中
+		@Autowired
+		private RepairService repairSrevice;
+		
+		@RequestMapping("/bikerepair/warn")
+		@ResponseBody
+		public boolean warn(@RequestBody RepairMsg bikeRepair) {
+			boolean flag=true;
+			try {
+				repairSrevice.update(bikeRepair);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				flag=false;
+			}
+			return flag;
+		}
+}

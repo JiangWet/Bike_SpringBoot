@@ -1,0 +1,23 @@
+package bike.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.data.geo.GeoResult;
+
+import bike.example.demo.pojo.Bike;
+import bike.example.demo.pojo.RepairMsg;
+import bike.example.demo.pojo.User;
+
+public interface BikeService {
+
+	public void save(Bike bike);
+
+	public List<GeoResult<Bike>> findNear(double longitude, double latitude);
+	
+	public void warn(RepairMsg bikeRepair);
+	
+	void update(RepairMsg bikeRepair);
+	
+	
+
+}

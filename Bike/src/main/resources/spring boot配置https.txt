@@ -1,0 +1,7 @@
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048
+
+server.port=8443
+server.ssl.key-store=classpath:keystore
+server.ssl.key-store-password=123456
+server.ssl.keyStoreType=PKCS12
+server.ssl.keyAlias=tomcat

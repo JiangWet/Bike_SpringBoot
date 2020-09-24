@@ -1,0 +1,11 @@
+package bike.example.demo.service;
+
+import bike.example.demo.pojo.Bike;
+import bike.example.demo.pojo.RepairMsg;
+
+public interface RepairService {
+	public void update(RepairMsg bikeRepair);
+	
+	public void save(RepairMsg bike);
+
+}

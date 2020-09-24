@@ -1,0 +1,14 @@
+package bike.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import bike.example.demo.service.BillingService;
+
+
+@Controller
+public class BillingController {
+	//到spring容器中查找BillingService的类型的实例，然后注入到BillingController实例中
+			@Autowired
+			private BillingService billingSrevice;
+}

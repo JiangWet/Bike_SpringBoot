@@ -1,0 +1,28 @@
+package bike.example.demo.pojo;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+//Bike这个类以后跟mongoDB中的bikes collection关联上了
+	@Document(collection="bikerepair")
+public class BikeRepair {
+		//主键（唯一、建立索引），id对于MongDB中的_id
+		@Id
+		private String id;
+		
+		//表示经纬度数组(数组第一个元素是经度，第二个为纬度）
+		@GeoSpatialIndexed(type=GeoSpatialIndexType.GEO_2DSPHERE)
+		private double[] location;
+		
+		//建立索引
+		@Indexed
+		//单车ID
+		private Long bikeNo;
+		//状态
+		private int status;
+		//保修信息
+		private String[] msg;
+		
+}

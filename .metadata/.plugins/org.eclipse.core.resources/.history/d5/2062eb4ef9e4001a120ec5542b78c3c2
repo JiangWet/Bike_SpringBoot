@@ -1,0 +1,100 @@
+package bike.example.demo.pojo;
+
+import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//Bike这个类以后跟mongoDB中的bikes collection关联上了
+@Document(collection="bikes")
+public class Bike {
+	
+	//主键（唯一、建立索引），id对于MongDB中的_id
+	@Id
+	private String id;
+	
+	//private double longitude;
+	
+	//private double latitude;
+	
+	//表示经纬度数组(数组第一个元素是经度，第二个为纬度）
+	@GeoSpatialIndexed(type=GeoSpatialIndexType.GEO_2DSPHERE)
+	private double[] location;
+	
+	//建立索引
+	@Indexed
+	//单车ID
+	private Long bikeNo;
+	//状态
+	private int status;
+	//报修信息
+	private String msg;
+	//图片
+	private String image;
+	//日期
+	private String regDate;
+	
+	
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public Long getBikeNo() {
+		return bikeNo;
+	}
+
+	public void setBikeNo(Long bikeNo) {
+		this.bikeNo = bikeNo;
+	}
+	
+	public double[] getLocation() {
+		return location;
+	}
+
+	public void setLocation(double[] location) {
+		this.location = location;
+	}
+
+
+
+}

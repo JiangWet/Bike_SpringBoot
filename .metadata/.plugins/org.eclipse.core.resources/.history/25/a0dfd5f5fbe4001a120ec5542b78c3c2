@@ -1,0 +1,44 @@
+package bike.example.demo.service;
+
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+import bike.example.demo.pojo.RepairMsg;
+@Service
+public class RepairServiceImpl implements RepairService {
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
+	//插入报修信息
+	@Override
+	public void update(RepairMsg bikeRepair) {
+	///如果对应_id数据不存在，就插入，存在则更新
+	//mongoTemplate.insert(bikeRepair);
+	//根据用户的手机号对数据进行更新
+	//更新用户对应的属性
+	Update update=new Update();
+	if(bikeRepair.getBikeNo()!=null) { 
+		update.set("bikeNo", bikeRepair.getBikeNo());
+	}
+	if(bikeRepair.getStatus()!=null) {
+		update.set("status",bikeRepair.getStatus());
+	}
+	if(bikeRepair.getLocation()!=null) {
+		update.set("location",bikeRepair.getLocation());
+	}
+	if(bikeRepair.getRepairMsg()!=null) {
+		update.set("repairMsg",bikeRepair.getRepairMsg());
+	}
+	if(bikeRepair.getImage()!=null) {
+		update.set("image",bikeRepair.getImage());
+	}			
+	if(bikeRepair.getRegDate()!=null) {
+		update.set("date",bikeRepair.getRegDate());
+	}
+	mongoTemplate.updateFirst(new Query(Criteria.where("phoneNum").is(bikeRepair.getPhoneNum())),update, RepairMsg.class);
+	}
+}

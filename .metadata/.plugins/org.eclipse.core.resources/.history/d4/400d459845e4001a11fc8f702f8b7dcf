@@ -1,0 +1,61 @@
+package bike.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.GeoResult;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import bike.example.demo.pojo.Bike;
+import bike.example.demo.pojo.RepairMsg;
+import bike.example.demo.service.BikeService;
+
+/**
+ * 标记这个类是一个用于接收请求和响应用户的一个控制器
+ * 加上@Controller注解后，Spring容器就会对它进行实例化
+ * @author 475581247@qq.com
+ *
+ */
+@Controller
+public class BikeController {
+	
+	//到spring容器中查找BikeService的类型的实例，然后注入到BikeController实例中
+	@Autowired
+	private BikeService bikeService;
+	
+	@RequestMapping("/bike/add")
+	@ResponseBody
+	public String add(@RequestBody Bike bike) {
+		//保存调用service，将数据保存到MongoDB中
+		bikeService.save(bike);
+		return "success";
+	}
+	
+	
+	@RequestMapping("/bike/findNear")
+	@ResponseBody
+	public List<GeoResult<Bike>> findNear(double longitude,double latitude) {
+		//保存调用service，将数据保存到MongoDB中
+		List<GeoResult<Bike>> bikes=bikeService.findNear(longitude,latitude);
+		return bikes;
+	}
+	
+	@RequestMapping("/bike/warn")
+	@ResponseBody
+	public String warn(@RequestBody Bike bikeRepair) {
+		boolean flag=true;
+		try {
+			bikeService.update(bikeRepair);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			flag=false;
+		}
+		return "success";
+	}
+	
+}

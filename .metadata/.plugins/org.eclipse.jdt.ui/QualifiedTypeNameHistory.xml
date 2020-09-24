@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="bike.example.demo.pojo.Bike"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="bike.example.demo.service.UserService"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.mapping.Document"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.index.Indexed"/>
+<fullyQualifiedTypeName name="bike.example.demo.pojo.User"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.MongoTemplate"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.Update"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.index.GeoSpatialIndexed"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.index.GeoSpatialIndexType"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.NearQuery"/>
+<fullyQualifiedTypeName name="org.springframework.data.geo.Metrics"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.Criteria"/>
+<fullyQualifiedTypeName name="javax.management.Query"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.Query"/>
+<fullyQualifiedTypeName name="org.springframework.data.geo.GeoResult"/>
+<fullyQualifiedTypeName name="cn.edu360.web.service.BikeService"/>
+<fullyQualifiedTypeName name="com.github.qcloudsms.SmsSingleSender"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="bike.example.demo.dao.mapper.BikeMapper"/>
+<fullyQualifiedTypeName name="org.springframework.boot.web.servlet.ServletComponentScan"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
+<fullyQualifiedTypeName name="org.mybatis.spring.annotation.MapperScan"/>
+<fullyQualifiedTypeName name="bike.example.demo.pojo.BikeRepair"/>
+<fullyQualifiedTypeName name="bike.example.demo.pojo.RepairMsg"/>
+<fullyQualifiedTypeName name="bike.example.demo.service.RepairService"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="bike.example.demo.service.BillingService"/>
+<fullyQualifiedTypeName name="bike.example.demo.pojo.Billing"/>
+</qualifiedTypeNameHistroy>
